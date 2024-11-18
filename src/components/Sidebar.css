@@ -1,0 +1,75 @@
+/* Sidebar container */
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  left: -250px; /* Sidebar is hidden by default */
+  transition: left 0.3s ease-in-out; /* Smooth slide-in/out effect */
+  z-index: 1000; /* Ensure sidebar is above other content */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for the sidebar */
+}
+
+/* When the sidebar is open, it moves to the left (0) */
+.sidebar.open {
+  left: 0; /* Sidebar is visible when open */
+}
+
+/* Sidebar list styling */
+.sidebar ul {
+  list-style-type: none;
+  padding: 20px 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+}
+
+/* Sidebar link styling */
+.sidebar a {
+  color: black;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect on links */
+.sidebar a:hover {
+  background-color: #888; /* Lighter shade of #555 */
+}
+
+/* Sidebar toggle button */
+.sidebar-toggle {
+  position: fixed;
+  top: 10px; /* Adjust this value to move the button upwards */
+  left: 20px;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  z-index: 1100; /* Ensure button is above the sidebar */
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect on the toggle button */
+.sidebar-toggle:hover {
+  background-color: #444;
+}
+
+/* Optional: Style for the content area when sidebar is open */
+.sidebar.open ~ .content {
+  margin-left: 250px; /* Add space for the sidebar */
+  transition: margin-left 0.3s ease;
+}
+
+/* Font Awesome icons styling */
+.fas {
+  font-size: 20px;
+}
+
