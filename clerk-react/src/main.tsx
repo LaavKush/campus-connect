@@ -10,11 +10,11 @@ import DashboardLayout from './layouts/root-layout';
 
 // Import the components
 import IndexPage from './routes/index';
-import ContactPage from './routes/contact';
-import SignInPage from './routes/sign-in';
-import SignUpPage from './routes/sign-up';
-import DashboardPage from './routes/dashboard';
-import InvoicesPage from './routes/dashboard.invoices';
+import ContactPage from './contact';
+import SignInPage from './sign-in';
+import SignUpPage from './sign-up';
+import DashboardPage from './dashboard';
+import InvoicesPage from './dashboard.invoices';
 
 
 // Clerk Publishable Key
