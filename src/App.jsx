@@ -7,10 +7,10 @@ import StudentDashboard from "./pages/StudentDashboard";
 import CanteenOrders from "./pages/CanteenOrders";
 import CampusStore from "./pages/CampusStore";
 import RentBuyMaterials from "./pages/RentBuyMaterials";
-import MyOrders from "./components/MyOrders";
 import Notifications from "./components/Notifications";
 import Favorites from "./components/Favorites";
 import Footer from "./components/Footer"; // Import Footer component
+import Cart from './components/cart'; // Ensure the path is correct
 import "./App.css"; // Import CSS
 
 function App() {
@@ -34,9 +34,9 @@ function App() {
               <Route path="/canteen-orders" element={<CanteenOrders />} />
               <Route path="/campus-store" element={<CampusStore />} />
               <Route path="/rent-buy-materials" element={<RentBuyMaterials />} />
-              <Route path="/my-orders" element={<MyOrders />} />
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/favorites" element={<Favorites />} />
+              <Route path="/cart" element={<Cart />} /> {/* Add Cart route */}
             </Routes>
           </div>
         </div>
