@@ -1,0 +1,89 @@
+/* BrowseItems.css */
+
+/* General styles for the container */
+.container {
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  min-height: 100vh; /* Full height of the viewport */
+  padding: 20px; /* Padding around the container */
+}
+
+/* General styles for the item grid */
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+  gap: 16px; /* Space between items */
+  padding: 20px; /* Padding around the grid */
+  justify-items: center; /* Center items within each grid cell */
+}
+
+/* General styles for the item card */
+.item-card {
+  width: 300px; /* Fixed width for the card */
+  height: 300px; /* Fixed height for the card */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Padding inside the card */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.2s; /* Smooth scaling effect */
+  background-color: #fff; /* White background */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: space-between; /* Space between items */
+}
+
+/* Scale up the card on hover */
+.item-card:hover {
+  transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Styles for the item image */
+.item-image {
+  width: 100%; /* Full width of the card */
+  height: 150px; /* Fixed height for images */
+  object-fit: cover; /* Cover the area without distortion */
+  border-radius: 4px; /* Slightly rounded corners for images */
+}
+
+/* Styles for headings */
+h1, h2 {
+  margin: 24px 0; /* Increased margin above and below headings */
+}
+
+/* Styles for buttons */
+button {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 12px 20px; /* Increased padding for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.2s, transform 0.2s; /* Smooth background color change and scaling */
+}
+
+/* Change button color on hover */
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Styles for select dropdown */
+select {
+  margin-top: 8px; /* Margin above the dropdown */
+  padding: 8px; /* Padding inside the dropdown */
+  border-radius: 4px; /* Rounded corners */
+  border: 1px solid #ccc; /* Light gray border */
+  width: 100%; /* Full width of the card */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Additional styles for spacing */
+.content-container {
+  padding-top: 60px; /* Space between navbar and content */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  width: 100%; /* Full width of the content container */
+}

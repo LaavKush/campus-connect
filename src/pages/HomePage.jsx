@@ -8,7 +8,7 @@ import banner from "../assets/banner.png";
 const HomePage = () => (
   <div>
     {/* <SearchBar /> */}
-    <img src={banner} alt="Banner" style={{ width: "100%", height: "auto" }} /> {/* Banner image */}
+    <img src={banner} alt="Banner" style={{ width: "500rem", height: "auto" }} /> {/* Banner image */}
     <QuickLinks />
     {/* <Announcements /> */}
   </div>

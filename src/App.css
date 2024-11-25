@@ -5,17 +5,6 @@
   text-align: center;
 }
 
-/* Navbar styling */
-.navbar {
-  background-color: #1976d2;
-  color: white;
-  padding: 10px 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin: 0; /* Remove negative margin */
-  width: 100%; /* Ensure it spans the full width */
-}
 
 /* App container setup for full screen layout */
 .app-container {
@@ -98,3 +87,5 @@ body {
 .read-the-docs {
   color: #888;
 }
+
+
