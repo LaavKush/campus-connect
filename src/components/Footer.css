@@ -1,0 +1,7 @@
+.background-container {
+    background-color: #f0f0f0; /* Replace with your background color */
+    height: 200px; /* Adjust the height to your preference */
+    display: flex; /* Ensures child elements respect flex layout */
+    align-items: center; /* Optional: Align content vertically */
+    padding: 16px; /* Add some padding for spacing */
+  }

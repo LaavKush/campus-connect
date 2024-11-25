@@ -105,7 +105,7 @@ const CampusStore = () => {
           description: "Gentle wet wipes for a quick refresh.",
         },
         {
-          name: "Makeup Remover",
+          name: "Makeup Remover ",
           image: makeupremover,
           cost: "₹180",
           rate: "per piece",
@@ -362,12 +362,6 @@ const CampusStore = () => {
         <Link to="/cart" className="your-cart-button">
           Go to Cart 
         </Link>
-        {/* {cart.map((cartItem, index) => (
-          <div key={index} className="cart-item">
-            <span>{cartItem.name}</span> - <span>₹{cartItem.cost}</span> x{" "}
-            <span>{cartItem.quantity}</span>
-          </div>
-        ))} */}
       </div>
     </div>
   );

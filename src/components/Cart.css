@@ -30,23 +30,40 @@
   }
   
   .cart-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    display: flex; /* Use Flexbox to align items in a row */
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Center items vertically */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px; /* Optional: Add some space above the buttons */
   }
   
   .checkout-button,
   .continue-shopping-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+    flex: 1; /* Make both buttons grow equally */
+    max-width: 200px; /* Set a maximum width for both buttons */
+    height: 50px; /* Set a fixed height for both buttons */
+    text-align: center; /* Center text inside buttons */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 0; /* Vertical padding */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s; /* Smooth background color transition */
+    box-sizing: border-box; /* Include padding and border in total width/height */
   }
   
   .checkout-button:hover,
   .continue-shopping-button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue on hover */
   }
+  .rupee {
+    font-size: inherit;
+    font-weight: bold; /* Optional: to make the R stand out */
+  }
+  
+  .rupee .small {
+    font-size: 3rem; /* Adjusts the size of "s." */
+    text-transform: lowercase;
+  }
+  

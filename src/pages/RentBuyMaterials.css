@@ -1,0 +1,39 @@
+/* RentBuyMaterials.css */
+.rent-buy-materials-container {
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    height: calc(100vh - 4rem); /* Full height minus navbar height */
+    margin-top: -4.5rem; /* No margin above the container */
+    margin-bottom: -1000rem; /* No margin above the container */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+    text-align: center; /* Center text */
+    width: 100%; /* Ensure full width for centering */
+    max-width: 800px; /* Optional: Set a max width for the container */
+}
+
+.options {
+    display: flex; /* Use flexbox for button layout */
+    flex-direction: row; /* Arrange buttons in a row */
+    gap: 1rem; /* Space between buttons */
+    margin-top: 1rem; /* Add some space above the buttons */
+}
+
+.option-button {
+    padding: 15px 30px; /* Increase padding for larger buttons */
+    font-size: 1.2rem; /* Font size for buttons */
+    font-weight: bold;
+    color: white;
+    background-color: #007bff; /* Blue color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

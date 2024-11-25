@@ -8,15 +8,16 @@
 
 /* Category section */
 .category-section {
-  margin-bottom: 40px;
+  margin-bottom: 50px; /* Increase space below each category section */
   width: 100%;
+ 
 }
 
 /* Category headings with increased font size */
 .category-heading {
-  font-size: 2rem; /* Increase the heading size */
+  font-size: 4rem; /* Increase the heading size */
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: -20px; /* Space below each category heading */
   text-align: center; /* Center align heading */
 }
 
@@ -26,7 +27,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center; /* Center content vertically */
-  margin: 15px;
+  margin: 80px 30px; /* Increased vertical margin to 30px */
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -34,6 +35,7 @@
   box-sizing: border-box;
   text-align: center; /* Center content horizontally */
   transition: box-shadow 0.3s; /* Add transition for hover effect */
+  min-height: 500px; /* Set a minimum height for the cards */
 }
 
 .item-card:hover {
@@ -135,17 +137,18 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* Cart container */
 .cart-container {
-  margin-top: 40px;
+  margin-top: 40px; /* Space above the cart section */
 }
 
 /* Cart item styling */
 .cart-item {
   margin: 5px 0;
- padding: 5px;
+  padding: 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
   display: flex;
@@ -156,12 +159,14 @@ button:hover {
 @media (max-width: 768px) {
   .item-card {
     width: calc(50% - 30px); /* 2 items per row on smaller screens */
+    margin: 30px 10px; /* Maintain increased vertical margin */
   }
 }
 
 @media (max-width: 480px) {
   .item-card {
     width: 100%; /* 1 item per row on very small screens */
+    margin: 30px 0; /* Maintain increased vertical margin */
   }
 }
 
@@ -184,7 +189,7 @@ button:hover {
 }
 
 .cart-container {
-  margin: 20px 0;
+  margin: 40px 0; /* Increased space above and below the cart section */
 }
 
 .cart-item {
@@ -210,13 +215,12 @@ button:hover {
 }
 
 .cart-container h2 {
-  font-size: 2em; /* Increase font size */
+  font-size: 3rem; /* Increase font size */
   font-weight: bold; /* Make it bold */
   color: #333; /* Change text color */
   text-align: center; /* Center the heading */
-  margin-bottom: -20px; /* Add some space below the heading */
+  margin-bottom: 0px; /* Add some space below the heading */
   text-transform: uppercase; /* Transform text to uppercase */
   letter-spacing: 1px; /* Add some space between letters */
- 
-  padding-bottom: 10px; /* Add padding below the heading */
+  padding-bottom: 0px; /* Add padding below the heading */
 }

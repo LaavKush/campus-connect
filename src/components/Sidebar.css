@@ -1,75 +1,66 @@
-/* Sidebar container */
+/* Sidebar Styles */
 .sidebar {
-  width: 250px;
-  height: 100%;
-  background-color: #333;
   position: fixed;
   top: 0;
-  left: -250px; /* Sidebar is hidden by default */
-  transition: left 0.3s ease-in-out; /* Smooth slide-in/out effect */
-  z-index: 1000; /* Ensure sidebar is above other content */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for the sidebar */
+  right: -250px; /* Initially hide the sidebar off-screen */
+  width: 250px;
+  height: 100%;
+  background-color: black !important; /* Ensure the background color is applied */
+  transition: right 0.3s ease; /* Smooth transition for opening/closing */
+  z-index: 1000; /* Ensure it appears above other content */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+  overflow-y: auto; /* Add scrolling if the content exceeds the height */
 }
 
-/* When the sidebar is open, it moves to the left (0) */
+/* Show sidebar when open */
 .sidebar.open {
-  left: 0; /* Sidebar is visible when open */
+  right: 0; 
 }
 
-/* Sidebar list styling */
+/* Sidebar List Styles */
 .sidebar ul {
-  list-style-type: none;
-  padding: 20px 0;
-  margin: 0;
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
 }
 
+/* Sidebar List Item Styles */
 .sidebar li {
-  margin: 15px 0;
+  padding: 15px; /* Spacing for list items */
+  text-align: left; /* Align items to the left */
 }
 
-/* Sidebar link styling */
+/* Sidebar Link Styles */
 .sidebar a {
-  color: black;
-  text-decoration: none;
-  padding: 10px 20px;
-  display: block;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  color: #ffffff; /* White text for better contrast */
+  text-decoration: none; /* Remove underline from links */
+  display: block; /* Make links block-level for easier clicking */
+  font-size: 16px; /* Font size for better readability */
+  line-height: 1.5; /* Line height for better spacing */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+  padding: 10px 15px; /* Add padding for clickable area */
 }
 
-/* Hover effect on links */
+/* Sidebar Link Hover Effect */
 .sidebar a:hover {
-  background-color: #888; /* Lighter shade of #555 */
+  background-color: #007bff; /* Bootstrap primary color on hover */
+  color: #ffffff; /* Keep text color white on hover */
 }
 
-/* Sidebar toggle button */
-.sidebar-toggle {
-  position: fixed;
-  top: 10px; /* Adjust this value to move the button upwards */
-  left: 20px;
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  z-index: 1100; /* Ensure button is above the sidebar */
-  transition: background-color 0.3s ease;
+/* Close Button Styles */
+.sidebar .close-btn {
+  background: none; /* No background */
+  border: none; /* No border */
+  color: #ffffff; /* White color for visibility */
+  font-size: 20px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  padding: 10px; /* Padding around the button */
+  position: absolute; /* Position it within the sidebar */
+  top: 10px; /* Position near the top */
+  right: 10px; /* Position near the right edge */
 }
 
-/* Hover effect on the toggle button */
-.sidebar-toggle:hover {
-  background-color: #444;
+/* Close Button Hover Effect */
+.sidebar .close-btn:hover {
+  color: #ffcc00; /* Change color on hover */
 }
-
-/* Optional: Style for the content area when sidebar is open */
-.sidebar.open ~ .content {
-  margin-left: 250px; /* Add space for the sidebar */
-  transition: margin-left 0.3s ease;
-}
-
-/* Font Awesome icons styling */
-.fas {
-  font-size: 20px;
-}
-
