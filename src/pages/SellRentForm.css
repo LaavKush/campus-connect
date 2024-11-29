@@ -1,0 +1,107 @@
+/* SellRentForm.css */
+
+.form-container {
+    max-width: 600px; /* Max width of the form */
+    margin: 20px auto; /* Center the form */
+    padding: 30px; /* Increased padding around the form */
+    border-radius: 12px; /* More pronounced rounded corners */
+    background-color: #ffffff; /* White background for a cleaner look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
+    border: 1px solid #e0e0e0; /* Subtle border */
+}
+
+.form-title {
+    text-align: center; /* Center title text */
+    font-size: 2.5rem; /* Increased font size for title */
+    margin-bottom: 20px; /* Spacing below title */
+    color: #333; /* Dark color for title */
+    font-family: 'Arial', sans-serif; /* Font family */
+}
+
+.form {
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Vertical layout */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Increased spacing between form groups */
+}
+
+.form-label {
+    font-weight: bold; /* Bold label text */
+    margin-bottom: 8px; /* Spacing below label */
+    display: block; /* Block display for labels */
+    color: #555; /* Slightly lighter color for labels */
+}
+
+.form-input,
+.form-textarea {
+    width: 100%; /* Full width inputs */
+    padding: 12px; /* Increased padding inside inputs */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 6px; /* Rounded corners */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth border color transition */
+    font-size: 1rem; /* Font size for inputs */
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add shadow on focus */
+    outline: none; /* Remove outline */
+}
+
+.form-textarea {
+    resize: vertical; /* Allow vertical resizing */
+    height: 120px; /* Set a default height for the textarea */
+}
+
+.checkbox-group {
+    display: flex; /* Flexbox for checkbox group */
+    align-items: center; /* Center align items */
+}
+
+.form-checkbox {
+    margin-right: 10px; /* Spacing between checkbox and label */
+    transform: scale(1.2); /* Increase checkbox size */
+}
+
+.form-button {
+    padding: 12px 20px; /* Increased padding for button */
+    background-color: #007bff; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border: none; /* No border */
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth background color transition */
+    font-size: 1rem; /* Font size for button */
+}
+
+.form-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.form-button:active {
+    transform: translateY(0); /* Reset lift effect when clicked */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .form-title {
+        font-size: 2rem; /* Adjust title size for smaller screens */
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+
+    .form-button {
+        font-size: 0.9rem; /* Adjust button font size for smaller screens */
+    }
+}

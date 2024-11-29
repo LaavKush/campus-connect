@@ -5,9 +5,9 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'Burger', quantity: 2, price: 5.99 },
-    { id: 2, name: 'Fries', quantity: 1, price: 2.99 },
-    { id: 3, name: 'Soda', quantity: 3, price: 1.49 },
+    { id: 1, name: 'Burger', quantity: 2, price: 50},
+    { id: 2, name: 'Fried Momos', quantity: 1, price: 80 },
+    { id: 3, name: 'Plane Sandwich', quantity: 3, price: 30 },
   ]);
 
   const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);

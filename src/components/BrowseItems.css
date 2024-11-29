@@ -1,0 +1,82 @@
+.container2 {
+  padding: 20px;
+  background-color: white; /* Light background for contrast */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  min-height: 100vh; /* Full height of the viewport */
+}
+
+.content-container2 {
+  max-width: 1200px; /* Limit the width of the content */
+  margin-left:8.3rem;
+  text-align: center; /* Center text within the container */
+}
+
+.main-heading2 {
+  font-size: 2.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.sub-heading2 {
+  font-size: 2rem;
+  color: #007bff; /* Blue color for subheadings */
+  margin: 20px 0 10px;
+}
+
+.item-grid2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four items in a row */
+  gap: 20px; /* Space between items */
+  margin-bottom: 40px; /* Space below the grid */
+}
+
+.item-card2 {
+  background-color: #fff; /* White background for cards */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s; /* Smooth scaling effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.item-card2:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+.item-card2 h3{
+  margin-top:0.5rem;
+}
+
+.item-image2 {
+  max-width: 100%; /* Responsive image */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 4px; /* Slightly rounded image corners */
+  margin-left:2rem;
+}
+
+.rent-buy-button {
+  background-color: #28a745; /* Green background color */
+  margin-top:0.5rem;
+  color: white; /* White text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 12px 20px; /* Padding for top/bottom and left/right */
+  font-size: 1rem; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.rent-buy-button:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.rent-buy-button:active {
+  transform: translateY(0); /* Reset lift effect when clicked */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+}

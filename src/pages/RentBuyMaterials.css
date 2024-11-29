@@ -5,7 +5,7 @@
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
     height: calc(100vh - 4rem); /* Full height minus navbar height */
-    margin-top: -4.5rem; /* No margin above the container */
+    margin-top: -8.5rem; /* No margin above the container */
     margin-bottom: -1000rem; /* No margin above the container */
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */

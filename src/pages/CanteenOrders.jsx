@@ -71,7 +71,7 @@ const CanteenOrders = () => {
   return (
     <div className="canteen-orders">
       <h1 className="title">Canteen Orders</h1>
-      <p className="subtitle">Place and track your canteen orders here.</p>
+      <p className="subtitle">Place your canteen orders here.</p>
       <div className="items-container">
         {items.map((item, index) => (
           <div className="item-card" key={index}>
@@ -90,12 +90,12 @@ const CanteenOrders = () => {
               <span className="quantity">{quantities[index]}</span>
               <button 
                 onClick={() => incrementQuantity(index)} 
-                className="button plus-button"
+                className="button plus-button1"
               >
                 +
               </button>
               <button
-                className="add-to-cart-button"
+                className="add-to-cart-button1"
                 onClick={() => handleBuy(index)}
               >
                 Buy
@@ -104,7 +104,7 @@ const CanteenOrders = () => {
           </div>
         ))}
       </div>
-      <div className="cart-summary">
+      <div className="cart-summary1">
         <h2>Cart Summary</h2>
         {cart.length > 0 ? (
           cart.map((cartItem, index) => (
@@ -116,8 +116,8 @@ const CanteenOrders = () => {
           <p>Your cart is empty.</p>
         )}
       </div>
-      <div className="button-container">
-        <button className="view-cart-button" onClick={() => window.location.href='/cart'}>
+      <div className="button-container1">
+        <button className="view-cart-button1" onClick={() => window.location.href='/cart'}>
           View Cart
         </button>
       </div>
