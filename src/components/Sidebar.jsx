@@ -14,9 +14,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <li><Link to="/canteen-orders">Canteen Orders</Link></li>
           <li><Link to="/campus-store">Campus Store</Link></li>
           <li><Link to="/rent-buy-materials">Rent/Buy Materials</Link></li>
-          <li><Link to="/cart">My Orders and Requests</Link></li>
-          <li><Link to="/notifications">Notifications</Link></li>
-          <li><Link to="/favorites">Favorites</Link></li>
+          <li><Link to="/cart">My cart</Link></li>
+          {/* <li><Link to="/notifications">Notifications</Link></li>
+          <li><Link to="/favorites">Favorites</Link></li> */}
         </ul>
       </div>
     </div>

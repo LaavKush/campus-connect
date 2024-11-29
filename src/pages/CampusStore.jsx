@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { useState } from "react";
 import "../components/CampusStore.css";
 
 // Import images for personal care and hygiene items
@@ -16,13 +15,13 @@ import toothpaste from "../assets/toothpaste.jpeg";
 import mouthwash from "../assets/mouthwash.jpeg";
 import moisturizer from "../assets/moisturizer.jpeg";
 
-// Import images for basic groceries items
+// Import images for basic groceries
 import biscuits from "../assets/biscuits.jpeg";
 import chips from "../assets/chips.jpeg";
-import chocolate from "../assets/choco.jpeg"; // Ensure file exists and the name is correct
+import chocolate from "../assets/choco.jpeg";
 import instantnoodles from "../assets/noodles.jpeg";
 import bread from "../assets/bread.jpeg";
-import peanutbutter from "../assets/butter.jpeg"; // Added import for peanut butter
+import peanutbutter from "../assets/butter.jpeg";
 import jam from "../assets/jam.jpeg";
 import ketchup from "../assets/ketchup.jpeg";
 
@@ -33,44 +32,13 @@ import pencil from "../assets/pencil.jpeg";
 import highlighter from "../assets/highlighter.jpeg";
 import stapler from "../assets/stapler.jpeg";
 import scissors from "../assets/scissors.jpeg";
-import gluestick from "../assets/glue.jpeg"; // Corrected the import for glue stick
+import gluestick from "../assets/glue.jpeg";
 import whiteboardmarker from "../assets/marker.jpeg";
 
 const CampusStore = () => {
   const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState({}); // Manage quantity for each item
-  const [openDescription, setOpenDescription] = useState({}); // Manage opened descriptions
-
-  const descriptionRef = useRef(); // Create a ref for the description container
-
-  const handleAddToCart = (item, quantity) => {
-    const existingItem = cart.find((cartItem) => cartItem.name === item.name);
-    if (existingItem) {
-      const updatedCart = cart.map((cartItem) =>
-        cartItem.name === item.name
-          ? { ...cartItem, quantity: cartItem.quantity + parseInt(quantity) }
-          : cartItem
-      );
-      setCart(updatedCart);
-    } else {
-      const newItem = { ...item, quantity: parseInt(quantity) };
-      setCart([...cart, newItem]);
-    }
-  };
-
-  const handleQuantityChange = (itemName, change) => {
-    setQuantity((prevQuantity) => ({
-      ...prevQuantity,
-      [itemName]: Math.max(1, (prevQuantity[itemName] || 1) + change),
-    }));
-  };
-
-  const handleDescriptionToggle = (itemName) => {
-    setOpenDescription((prev) => ({
-      ...prev,
-      [itemName]: !prev[itemName],
-    }));
-  };
+  const [quantities, setQuantities] = useState({});
+  const [openDescription, setOpenDescription] = useState({});
 
   const items = [
     {
@@ -105,7 +73,7 @@ const CampusStore = () => {
           description: "Gentle wet wipes for a quick refresh.",
         },
         {
-          name: "Makeup Remover ",
+          name: "Makeup Remover",
           image: makeupremover,
           cost: "₹180",
           rate: "per piece",
@@ -286,82 +254,96 @@ const CampusStore = () => {
     },
   ];
 
-  // Effect to handle clicks outside the description
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (descriptionRef.current && !descriptionRef.current.contains(event.target)) {
-        setOpenDescription({});
+  const incrementQuantity = (itemName) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [itemName]: (prev[itemName] || 0) + 1,
+    }));
+  };
+
+  const decrementQuantity = (itemName) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [itemName]: Math.max(0, (prev[itemName] || 0) - 1),
+    }));
+  };
+
+  const handleBuy = (item) => {
+    const quantity = quantities[item.name] || 0;
+    if (quantity > 0) {
+      const existingIndex = cart.findIndex((cartItem) => cartItem.name === item.name);
+      if (existingIndex !== -1) {
+        const updatedCart = [...cart];
+        updatedCart[existingIndex].quantity += quantity;
+        setCart(updatedCart);
+      } else {
+        setCart([...cart, { ...item, quantity }]);
       }
-    };
+      setQuantities((prev) => ({ ...prev, [item.name]: 0 }));
+      alert(`${quantity} ${item.name}(s) added to your cart.`);
+    } else {
+      alert("Please add at least one item to your cart.");
+    }
+  };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  const totalItemsInCart = cart.reduce((total, item) => total + item.quantity, 0);
+  const toggleDescription = (itemName) => {
+    setOpenDescription((prev) => ({
+      ...prev,
+      [itemName]: !prev[itemName],
+    }));
+  };
 
   return (
-    <div className="store-container" ref={descriptionRef}>
-      {items.map((category, index) => (
-        <div key={index} className="category-section">
-          <h2 className="category-heading">{category.category}</h2>
-          <div className="items">
+    <div className="campus-store">
+      {items.map((category) => (
+        <div key={category.category} className="category">
+          <h2>{category.category}</h2>
+          <div className="items-grid">
             {category.items.map((item) => (
               <div key={item.name} className="item-card">
                 <img src={item.image} alt={item.name} className="item-image" />
-                <div className="item-details">
-                  <h3 className="item-name">{item.name}</h3>
-                  <p className="item-cost">{item.cost}</p>
-                  <p className="item-rate">{item.rate}</p>
-
-                  <div className="dropdown-description">
-                    <button
-                      className="dropdown-button"
-                      onClick={() => handleDescriptionToggle(item.name)}
-                    >
-                      Description
-                    </button>
-                    <div className={`dropdown-content ${openDescription[item.name] ? 'open' : ''}`}>
-                      <p>{item.description}</p>
-                    </div>
-                  </div>
-
-                  <div className="item-quantity">
-                    <button
-                      onClick={() => handleQuantityChange(item.name, -1)}
-                      className="quantity-button"
-                    >
-                      -
-                    </button>
-                    <span>{quantity[item.name] || 1}</span>
-                    <button
-                      onClick={() => handleQuantityChange(item.name, 1)}
-                      className="quantity-button"
-                    >
-                      +
-                    </button>
-                  </div>
-
-                  <button
-                    className="add-to-cart-button"
-                    onClick={() => handleAddToCart(item, quantity[item.name] || 1)}
-                  >
-                    Add to Cart
-                  </button>
+                <h3>{item.name}</h3>
+                <p className="item-cost">{item.cost} {item.rate}</p>
+                <button
+                  onClick={() => toggleDescription(item.name)}
+                  className="description-button"
+                >
+                  {openDescription[item.name] ? "Hide Description" : "View Description"}
+                </button>
+                {openDescription[item.name] && (
+                  <p className="item-description">{item.description}</p>
+                )}
+                <div className="quantity-controls">
+                  <button onClick={() => decrementQuantity(item.name)}>-</button>
+                  <span>{quantities[item.name] || 0}</span>
+                  <button onClick={() => incrementQuantity(item.name)}>+</button>
                 </div>
+                <button onClick={() => handleBuy(item)} className="buy-button">
+                  Add to Cart
+                </button>
               </div>
             ))}
           </div>
         </div>
       ))}
-
-      <div className="cart-container">
-        <h2>Your Cart</h2>
-        <Link to="/cart" className="your-cart-button">
-          Go to Cart 
-        </Link>
+      <div className="cart">
+        <h2>Cart</h2>
+        {cart.length === 0 ? (
+          <p>Your cart is empty.</p>
+        ) : (
+          <ul>
+            {cart.map((cartItem) => (
+              <li key={cartItem.name}>
+                {cartItem.name} - {cartItem.quantity}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      <div className="button-container">
+        <button className="view-cart-button" onClick={() => window.location.href='/cart'}>
+          View Cart
+        </button>
       </div>
     </div>
   );

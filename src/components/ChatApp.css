@@ -1,0 +1,145 @@
+/* Chat Container */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center vertically */
+    background: linear-gradient(135deg, #d92332, #eca72c, #7ec850, #32a9d9);
+    height: 90vh;
+    font-family: Arial, sans-serif;
+    margin-left:35rem;
+}
+
+/* Chat Header */
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center header content */
+    background-color: rgba(255, 255, 255, 0.8);
+    
+    width: 100%;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.chat-info {
+    display: flex;
+    flex-direction: column;
+    align-items: left; /* Center info text */
+}
+
+.person-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.status {
+    font-size: 12px;
+    color: #4caf50; /* Green for online status */
+    margin-top: 3px;
+}
+
+/* Chat Box */
+.chat-box {
+   /* White background with 80% opacity */
+    width: 400px;
+    max-height: 600px;
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 20px 0; /* Add margin for spacing */
+    flex: 1;
+}
+
+/* Message Styles */
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 75%;
+    position: relative;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.self-message {
+    background-color: #e0f7fa;
+    align-self: flex-end;
+    margin-left: auto;
+    text-align: right;
+}
+
+.other-message {
+    background-color: #ffe0b2;
+    align-self: flex-start;
+    margin-right: auto;
+    text-align: left;
+}
+
+.text {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.time {
+    font-size: 10px;
+    color: #999;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+/* Scrollbar Styles */
+.chat-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* Chat Input */
+.chat-input {
+    display: flex;
+    width: 400px;
+    margin-top: 10px; /* Add margin for spacing */
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.chat-input button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    background-color: #32a9d9;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+}
+
+.chat-input button:hover {
+    background-color: #1e88e5;
+}

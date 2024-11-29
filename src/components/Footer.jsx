@@ -47,7 +47,7 @@ const Footer = () => (
 </div>
 
       {/* Terms & Policies */}
-      <div className="flex flex-col space-y-1 mr-4">
+      <div className="flex flex-col space-y-1 mr-40">
         <h3 className="font-semibold text-lg">Terms & Policies</h3>
         <Link to="/privacy-policy" className="text-sm hover:text-blue-400">Privacy Policy</Link>
         <Link to="/terms-of-service" className="text-sm hover:text-blue-400">Terms of Service</Link>
