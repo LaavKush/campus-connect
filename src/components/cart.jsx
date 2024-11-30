@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import { useCart } from '../context/CartContext'; // Ensure the path is correct
 import './Cart.css'; // Import the CSS file for styling
 
 const Cart = () => {
   const { cartItems, totalPrice } = useCart();
+  const navigate = useNavigate(); // Initialize useNavigate
 
   // Ensure totalPrice is a valid number
   const formattedTotalPrice = isNaN(Number(totalPrice)) ? 0 : Number(totalPrice);
@@ -48,10 +50,15 @@ const Cart = () => {
 
       {/* Cart Buttons */}
       <div className="cart-buttons">
-        <button className="checkout-button">Proceed to Checkout</button>
-        <button 
-          className="continue-shopping-button" 
-          onClick={() => window.location.href='/'} // Redirect to home
+        <button
+          className="checkout-button"
+          onClick={() => navigate('/payment')} // Use navigate() for React Router navigation
+        >
+          Proceed to Checkout
+        </button>
+        <button
+          className="continue-shopping-button"
+          onClick={() => navigate('/')} // Navigate to home using React Router
         >
           Continue Shopping
         </button>

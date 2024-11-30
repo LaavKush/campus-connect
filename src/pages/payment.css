@@ -1,0 +1,153 @@
+/* Container styles for the payment gateway */
+.payment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    background-color: #f8f8f8; /* Light background */
+    padding: 30px;
+    font-family: 'Roboto', sans-serif; /* Modern font */
+    box-sizing: border-box;
+    text-align: center; /* Ensures everything is centered */
+    margin-left:34rem;
+}
+
+/* Payment title styles */
+.payment-title {
+    font-size: 2.2rem; /* Slightly smaller title size */
+    color: #333;
+    font-weight: 700;
+    margin: 20px 0 30px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* Success message styles */
+.payment-success {
+    background-color: #e1f7e1;
+    border: 1px solid #b2f0b2;
+    padding: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    border-radius: 8px;
+    width: 70%; /* Reduced width */
+    max-width: 500px; /* Ensures it doesn't stretch too wide */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+    margin: 20px auto; /* Centers it */
+}
+
+/* Title inside success message */
+.payment-success h3 {
+    color: #4CAF50;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Description inside success message */
+.payment-success p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* QR code container */
+.qr-code-container {
+    text-align: center;
+    margin-top: 40px;
+    width: 70%; /* Reduced width */
+    max-width: 400px; /* Ensures it doesn't stretch too wide */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto; /* Centers the QR code */
+}
+
+/* QR code text styling */
+.qr-code-container p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+//* QR code image styling */
+.qr-image {
+    width: 10rem; /* Reduced QR code image size */
+    height: 10rem; /* Reduced QR code image size */
+    margin-top: 20px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .qr-image {
+        width: 120px; /* Further reduced size for mobile */
+        height: 120px; /* Further reduced size for mobile */
+    }
+}
+
+
+/* Hover effect for QR image */
+.qr-image:hover {
+    transform: scale(1.05);
+}
+
+/* Scan button styling */
+.scan-button {
+    margin-top: 30px;
+    padding: 12px 28px; /* Slightly smaller button padding */
+    font-size: 1.1rem;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Hover effect for the button */
+.scan-button:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+}
+
+/* Button active state */
+.scan-button:active {
+    transform: translateY(2px); /* Subtle press effect */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .payment-container {
+        padding: 20px;
+    }
+
+    .payment-title {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+
+    .payment-success {
+        width: 90%;
+    }
+
+    .qr-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .scan-button {
+        width: 80%;
+    }
+}
