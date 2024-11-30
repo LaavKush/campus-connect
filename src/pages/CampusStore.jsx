@@ -329,7 +329,7 @@ const CampusStore = () => {
         </ul>
       </div>
       <div className="button-container1">
-        <button className="view-cart-button1" onClick={() => window.location.href='/canteen-cart'}>
+        <button className="view-cart-button1" onClick={() => window.location.href='/store-cart'}>
           View Cart
         </button>
       </div>

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 
 // Create the context
 const StoreCartContext = createContext();
@@ -11,26 +11,16 @@ export const StoreCartProvider2 = ({ children }) => {
     { id: 3, name: 'Pen', quantity: 2, price: 10 },
   ]);
 
-  const addItemToCart = (item) => {
-    setCartItems((prev) => {
-      const existingIndex = prev.findIndex((cartItem) => cartItem.name === item.name);
-      if (existingIndex !== -1) {
-        const updatedCart = [...prev];
-        updatedCart[existingIndex].quantity += item.quantity;
-        return updatedCart;
-      } else {
-        return [...prev, item];
-      }
-    });
+  const removeFromCart = (id) => {
+    setCartItems(prevItems => prevItems.filter(item => item.id !== id));
   };
 
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  ).toFixed(2);
+  const totalPrice = useMemo(() => {
+    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+  }, [cartItems]);
 
   return (
-    <StoreCartContext.Provider value={{ cartItems, totalPrice, addItemToCart }}>
+    <StoreCartContext.Provider value={{ cartItems, totalPrice, removeFromCart }}>
       {children}
     </StoreCartContext.Provider>
   );

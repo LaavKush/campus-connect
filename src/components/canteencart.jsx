@@ -1,19 +1,20 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
-import { useCart } from '../context/CanteenCartContext'; // Ensure the path is correct
-import './Cart.css'; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CanteenCartContext';
+import './Cart.css';
+
 
 const CanteenCart = () => {
-  const { cartItems, totalPrice } = useCart();
-  const navigate = useNavigate(); // Initialize useNavigate
+  const { cartItems, totalPrice, removeFromCart } = useCart(); // Access the context
+  const navigate = useNavigate();
 
-  // Ensure totalPrice is a valid number
-  const formattedTotalPrice = isNaN(Number(totalPrice)) ? 0 : Number(totalPrice);
+  
 
-  // Check if cartItems is empty
+  // Handle empty cart case
   if (cartItems.length === 0) {
-    return <div className="empty-cart">Your cart is empty.</div>; // Handle case where cartItems is empty
+    return <div className="empty-cart">Your cart is empty.</div>;
   }
+  
 
   return (
     <div className="cart-container">
@@ -27,6 +28,7 @@ const CanteenCart = () => {
             <th>Quantity</th>
             <th>Price (Rs.)</th>
             <th>Total (Rs.)</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +38,14 @@ const CanteenCart = () => {
               <td>{item.quantity}</td>
               <td>{item.price.toFixed(2)}</td>
               <td>{(item.price * item.quantity).toFixed(2)}</td>
+              <td>
+                <button
+                  className="remove-button"
+                  onClick={() => removeFromCart(item.id)} // Correctly calling removeFromCart
+                >
+                  Remove
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -44,7 +54,7 @@ const CanteenCart = () => {
       {/* Cart Total */}
       <div className="cart-total">
         <h2>
-          Total: <span className="rupee">R<span className="small">s.</span></span> {formattedTotalPrice.toFixed(2)}
+          Total: <span className="rupee">R<span className="small">s.</span></span> {totalPrice}
         </h2>
       </div>
 
@@ -52,13 +62,13 @@ const CanteenCart = () => {
       <div className="cart-buttons">
         <button
           className="checkout-button"
-          onClick={() => navigate('/payment')} // Use navigate() for React Router navigation
+          onClick={() => navigate('/payment')}
         >
-          Proceed to Checkout
+          Buy
         </button>
         <button
           className="continue-shopping-button"
-          onClick={() => navigate('/')} // Navigate to home using React Router
+          onClick={() => navigate('/')}
         >
           Continue Shopping
         </button>
