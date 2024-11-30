@@ -1,52 +1,65 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Use useNavigate instead of useHistory
+import React, { useState } from "react"; // Import React and useState
+import { useNavigate } from "react-router-dom";
+import './Login.css'; // Import the CSS file
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Add your login logic here (e.g., API call)
-    // If login is successful, redirect or change state in Navbar
+    // Add your login logic here
     navigate("/"); // Redirect to home after login
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10">
-      <h2 className="text-2xl mb-4">Login</h2>
-      <form onSubmit={handleLogin}>
-        <div className="mb-4">
-          <label className="block mb-2" htmlFor="email">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="border p-2 w-full"
-          />
+    <div className="login-container">
+      <div className="form-container">
+        <h2 className="form-title">Welcome Back</h2>
+        <p className="form-subtitle">Log in to continue to your account</p>
+        <form onSubmit={handleLogin}>
+          <div className="form-group">
+            <label className="form-label" htmlFor="email">
+              Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="form-input"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label" htmlFor="password">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="form-input"
+              placeholder="Enter your password"
+            />
+          </div>
+          <button type="submit" className="form-button">
+            Login
+          </button>
+        </form>
+        <div className="form-footer">
+          <p>
+            Don't have an account?{" "}
+            <a href="/signup" className="form-link">
+              Sign up
+            </a>
+          </p>
         </div>
-        <div className="mb-4">
-          <label className="block mb-2" htmlFor="password">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="border p-2 w-full"
-          />
-        </div>
-        <button type="submit" className="bg-blue-600 text-white p-2">
-          Login
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

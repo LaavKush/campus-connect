@@ -1,0 +1,61 @@
+/* PrivacyPolicy.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7; /* Light gray background */
+}
+
+.privacy-policy-container {
+    max-width: 800px; /* Limit the width of the container */
+    margin: 40px auto; /* Center the container */
+    padding: 20px;
+    background-color: #ffffff; /* White background for the policy */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.policy-title {
+    font-size: 36px; /* Large title */
+    font-weight: bold; /* Bold font */
+    color: #333; /* Dark gray */
+    margin-bottom: 20px; /* Space below the title */
+    text-align: center; /* Center the title */
+}
+
+.policy-intro {
+    font-size: 18px; /* Introductory text size */
+    color: #555; /* Medium gray */
+    margin-bottom: 30px; /* Space below the intro */
+    text-align: center; /* Center the intro */
+}
+
+.policy-sections {
+    margin-top: 20px; /* Space above sections */
+}
+
+.policy-section {
+    margin-bottom: 30px; /* Space between sections */
+}
+
+.section-title {
+    font-size: 24px; /* Section title size */
+    font-weight: bold; /* Bold font for section titles */
+    color: #333; /* Dark gray */
+    margin-bottom: 10px; /* Space below section title */
+}
+
+.section-content {
+    font-size: 16px; /* Content text size */
+    color: #666; /* Lighter gray for content */
+    line-height: 1.5; /* Improved line spacing */
+}
+
+.contact-link {
+    color: #007bff; /* Blue color for links */
+    text-decoration: none; /* Remove underline */
+}
+
+.contact-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}

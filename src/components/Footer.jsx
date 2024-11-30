@@ -20,9 +20,9 @@ const Footer = () => (
           <FaBook className="text-yellow-400" />
           <span>Rent/Buy Materials</span>
         </Link>
-        <Link to="/faq" className="flex items-center space-x-2 hover:text-purple-400">
+        <Link to="/FAQs" className="flex items-center space-x-2 hover:text-purple-400">
           <FaInfoCircle className="text-purple-400" />
-          <span>FAQ</span>
+          <span>FAQs</span>
         </Link>
         <Link to="/contact" className="flex items-center space-x-2 hover:text-red-400">
           <FaInfoCircle className="text-red-400" />

@@ -1,0 +1,96 @@
+/* Login.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7fafc; /* Light gray background */
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full height of the viewport */
+    margin-left:10rem;
+}
+
+.form-container {
+    background-color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 32px;
+    width: 100%;
+    max-width: 400px; /* Set max width for the form */
+    margin-left:29rem;
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a5568; /* Dark gray */
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.form-subtitle {
+    font-size: 14px;
+    color: #718096; /* Medium gray */
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    font-weight: 500;
+    color: #4a5568; /* Dark gray */
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e0; /* Light gray */
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    border-color: #3182ce; /* Blue */
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.5); /* Light blue shadow */
+}
+
+.form-button {
+    width: 100%;
+    background-color: #3182ce; /* Blue */
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.form-button:hover {
+    background-color: #2b6cb0; /* Darker blue */
+ }
+
+.form-footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.form-link {
+    color: #3182ce; /* Blue */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.form-link:hover {
+    text-decoration: underline;
+}

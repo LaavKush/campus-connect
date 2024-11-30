@@ -1,0 +1,96 @@
+/* ContactUs.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4ff; /* Light background color */
+}
+
+.title {
+    margin-bottom: 20px;
+    color: #004aad; /* Primary color */
+    font-size: 2rem; /* Larger title font */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+}
+
+.form {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+    text-align: center; /* Center content inside the form */
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left; /* Align labels and inputs to the left */
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333; /* Dark text color */
+    font-size: 0.95rem; /* Slightly larger text */
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 12px; /* Add extra padding for better UX */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem; /* Uniform font size */
+    transition: border-color 0.3s ease; /* Smooth transition on focus */
+}
+
+.input:focus,
+.textarea:focus {
+    border-color: #004aad; /* Highlight input border on focus */
+    outline: none; /* Remove default outline */
+}
+
+.textarea {
+    resize: none; /* Prevent resizing */
+}
+
+.button {
+    background-color: #004aad; /* Primary button color */
+    color: white; /* White text */
+    padding: 12px 20px; /* More padding for larger button */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem; /* Larger button text */
+    font-weight: bold; /* Bold button text */
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+.button:hover {
+    background-color: #00307a; /* Darker shade on hover */
+}
+
+/* Center align the form and title perfectly on screen */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-message {
+    margin-top: 20px;
+    color: #28a745; /* Green color for success */
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+

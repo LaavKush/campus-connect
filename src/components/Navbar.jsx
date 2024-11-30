@@ -19,11 +19,12 @@ const Navbar = ({ toggleSidebar, isOpen, isLoggedIn, toggleLogin }) => {
               <i className="fas fa-bars"></i> // Icon to open the sidebar
             )}
           </button>
+
           {/* Navigation Links */}
           <Link to="/" className="text-white">
             Home
           </Link>
-        
+
           {/* Conditional rendering for Login/Logout */}
           {isLoggedIn ? (
             <button onClick={toggleLogin} className="text-white">
