@@ -7,7 +7,7 @@ import labCoat from '../assets/rentbuy/coat.jpeg';
 import drafter from '../assets/rentbuy/drafter.jpeg';
 import sheetHolder from '../assets/rentbuy/sheet holder.jpeg';
 import workshopApron from '../assets/rentbuy/apron.jpeg';
-import { useCart } from '../context/CartContext'; // Correct import path
+// import { useCart } from '../context/CartContext'; // Correct import path
 import '../components/BrowseItems.css'; // Import CSS for styling
 
 const browseitems = {

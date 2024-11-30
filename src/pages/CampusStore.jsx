@@ -279,10 +279,7 @@ const CampusStore = () => {
       } else {
         setCart([...cart, { ...item, quantity }]);
       }
-      setQuantities((prev) => ({ ...prev, [item.name]: 0 }));
-      alert(`${quantity} ${item.name}(s) added to your cart.`);
-    } else {
-      alert("Please add at least one item to your cart.");
+      setQuantities({ ...quantities, [item.name]: 0 }); // Reset quantity after adding to cart
     }
   };
 
@@ -294,54 +291,45 @@ const CampusStore = () => {
   };
 
   return (
-    <div className="campus-store">
+    <div className="store">
       {items.map((category) => (
         <div key={category.category} className="category">
           <h2>{category.category}</h2>
-          <div className="items-grid">
+          <div className="item-list">
             {category.items.map((item) => (
-              <div key={item.name} className="item-card">
+              <div key={item.name} className="item">
                 <img src={item.image} alt={item.name} className="item-image" />
-                <h3>{item.name}</h3>
-                <p className="item-cost">{item.cost} {item.rate}</p>
-                <button
-                  onClick={() => toggleDescription(item.name)}
-                  className="description-button"
-                >
-                  {openDescription[item.name] ? "Hide Description" : "View Description"}
-                </button>
-                {openDescription[item.name] && (
-                  <p className="item-description">{item.description}</p>
-                )}
-                <div className="quantity-controls">
-                  <button onClick={() => decrementQuantity(item.name)}>-</button>
-                  <span>{quantities[item.name] || 0}</span>
-                  <button onClick={() => incrementQuantity(item.name)}>+</button>
+                <div className="item-details">
+                  <h3>{item.name}</h3>
+                  <p>Price: {item.cost} ({item.rate})</p>
+                  <button onClick={() => toggleDescription(item.name)}>Show Description</button>
+                  {openDescription[item.name] && <p>{item.description}</p>}
+                  <div className="quantity-controls">
+                    <button onClick={() => decrementQuantity(item.name)}>-</button>
+                    <span>{quantities[item.name] || 0}</span>
+                    <button onClick={() => incrementQuantity(item.name)}>+</button>
+                  </div>
+                  <button className="buy-button" onClick={() => handleBuy(item)}>
+                    Add to Cart
+                  </button>
                 </div>
-                <button onClick={() => handleBuy(item)} className="buy-button">
-                  Add to Cart
-                </button>
               </div>
             ))}
           </div>
         </div>
       ))}
       <div className="cart">
-        <h2>Cart</h2>
-        {cart.length === 0 ? (
-          <p>Your cart is empty.</p>
-        ) : (
-          <ul>
-            {cart.map((cartItem) => (
-              <li key={cartItem.name}>
-                {cartItem.name} - {cartItem.quantity}
-              </li>
-            ))}
-          </ul>
-        )}
+        <h3>Your Cart</h3>
+        <ul>
+          {cart.map((cartItem, index) => (
+            <li key={index}>
+              {cartItem.name} x{cartItem.quantity} - {cartItem.cost} 
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className="button-container">
-        <button className="view-cart-button" onClick={() => window.location.href='/cart'}>
+      <div className="button-container1">
+        <button className="view-cart-button1" onClick={() => window.location.href='/canteen-cart'}>
           View Cart
         </button>
       </div>

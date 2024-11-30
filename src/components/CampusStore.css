@@ -1,76 +1,84 @@
 /* Store container */
-.store-container {
+.store {
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* Category section */
-.category-section {
-  margin-bottom: 50px; /* Increase space below each category section */
   width: 100%;
 }
 
-/* Category headings with increased font size */
-.category-heading {
-  font-size: 4rem; /* Increase the heading size */
-  font-weight: bold;
-  margin-bottom: 20px; /* Space below each category heading */
-  text-align: center; /* Center align heading */
-  color: #333; /* Darker shade for better visibility */
+/* Category section */
+.category {
+  margin-bottom: 50px; /* Increased space below each category section */
+  width: 100%;
 }
 
-/* Item card styling */
-.item-card {
+.category h2 {
+  font-size: 2.5rem; /* Increased font size */
+  color: #333; /* Dark color for better readability */
+  font-weight: bold; /* Bold text */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 1px; /* Spacing between letters */
+  border-bottom: 2px solid #007bff; /* Bottom border */
+  padding-bottom: 10px; /* Space between text and border */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+/* Item list */
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Item styling */
+.item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* Space between elements */
-  margin: 20px; /* Adjusted margin for spacing */
+  justify-content: space-between;
+  margin: 20px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   width: calc(25% - 40px); /* 4 items per row with margins */
   box-sizing: border-box;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s; /* Add smooth transition for hover effects */
-  min-height: 500px; /* Consistent card height */
-  background-color: #f9f9f9; /* Light background color for cards */
+  transition: transform 0.3s, box-shadow 0.3s;
+  min-height: 500px;
+  background-color: #f9f9f9;
 }
 
-.item-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Elevate shadow on hover */
-  transform: scale(1.05); /* Slight scale effect */
-}
-
-/* Items grid */
-.items-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* Equal space between items */
-  width: 100%;
+.item:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }
 
 /* Item image */
-.item-card img {
+.item-image {
   width: 150px;
   height: 150px;
   object-fit: cover;
   margin-bottom: 15px;
-  border-radius: 8px; /* Rounded corners for images */
+  border-radius: 8px;
 }
 
-/* Item cost */
-.item-cost {
-  font-size: 1.2rem;
+/* Item details */
+.item-details h3 {
+  font-size: 1.5rem;
   font-weight: bold;
-  margin: 10px 0;
-  color: #555; /* Neutral color */
+  margin-bottom: 10px;
+}
+
+.item-details p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 15px;
 }
 
 /* Description button */
-.description-button {
+button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -81,16 +89,8 @@
   transition: background-color 0.3s;
 }
 
-.description-button:hover {
+button:hover {
   background-color: #0056b3;
-}
-
-/* Item description */
-.item-description {
-  font-size: 0.9rem;
-  color: #666;
-  margin: 10px 0;
-  text-align: justify;
 }
 
 /* Quantity controls */
@@ -148,7 +148,7 @@
   background-color: #fff;
 }
 
-.cart h2 {
+.cart h3 {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 15px;
@@ -165,36 +165,26 @@
   margin: 10px 0;
 }
 
+/* Button container */
 .button-container {
   display: flex;
-  justify-content: center; /* Center the button horizontally */
-  margin-top: 20px; /* Add some space above the button */
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .view-cart-button {
-  background-color: #4CAF50; /* Green background */
-  color: white; /* White text */
-  padding: 10px 20px; /* Add some padding */
-  text-align: center; /* Center the text */
-  text-decoration: none; /* Remove underline */
-  display: inline-block; /* Make it an inline-block element */
-  font-size: 16px; /* Increase font size */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 .view-cart-button:hover {
-  background-color: #45a049; /* Darker green on hover */
-}
-
-.category h2 {
-  font-size: 2.5rem; /* Increase font size */
-  color: #333; /* Dark color for better readability */
-  font-weight: bold; /* Make the text bold */
-  text-transform: uppercase; /* Transform text to uppercase */
-  letter-spacing: 1px; /* Add spacing between letters */
-  border-bottom: 2px solid #007bff; /* Add a bottom border */
-  padding-bottom: 10px; /* Space between text and border */
-  transition: color 0.3s; /* Smooth color transition */
+  background-color: #45a049;
 }
