@@ -11,41 +11,43 @@ import BrowseItems from './pages/BrowseItems';
 import Notifications from "./components/Notifications";
 import Favorites from "./components/Favorites";
 import Footer from "./components/Footer";
-import Cart from "./components/cart"; // Ensure the component name is capitalized
-import { CartProvider } from "./context/CartContext"; // Importing CartProvider
+import StoreCart from "./components/storecart"; 
+import CanteenCart from "./components/canteencart";
+import { StoreCartProvider2 } from "./context/StoreCartContext";
+import { CanteenCartProvider1 } from "./context/CanteenCartContext";
 import PrivacyPolicy from "./pages/PrivacyPolicy"; 
 import TermsOfService from "./pages/TermsOfService"; 
 import TermsPolicies from "./pages/TermsPolicies"; 
 import Login from "./pages/Login"; 
 import Signup from "./pages/Signup"; 
-import Chat from "./pages/Chat"; // Ensure the component name is capitalized
+import Chat from "./pages/Chat"; 
 import FAQs from "./pages/FAQs";
-import ContactUs from "./pages/ContactUs"; // Fixed naming case
-import Payment from "./pages/Payment"; // Changed to match filename
+import ContactUs from "./pages/ContactUs"; 
+import Payment from "./pages/Payment";
 
 import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login status
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Router>
-      <CartProvider> {/* Ensure CartProvider wraps the entire app */}
-        <AppContent 
-          isLoggedIn={isLoggedIn} 
-          setIsLoggedIn={setIsLoggedIn} 
-        />
-      </CartProvider>
+      <StoreCartProvider2>
+        <CanteenCartProvider1>
+          <AppContent 
+            isLoggedIn={isLoggedIn} 
+            setIsLoggedIn={setIsLoggedIn} 
+          />
+        </CanteenCartProvider1>
+      </StoreCartProvider2>
     </Router>
   );
 }
 
 const AppContent = ({ isLoggedIn, setIsLoggedIn }) => {
-  const [isOpen, setIsOpen] = useState(false); // State to track sidebar visibility
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen); // Toggle sidebar visibility
-  };
+  const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
     <div className="app-container">
@@ -68,7 +70,8 @@ const AppContent = ({ isLoggedIn, setIsLoggedIn }) => {
           <Route path="/browse-items" element={<BrowseItems />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/canteen-cart" element={<CanteenCart />} />
+          <Route path="/store-cart" element={<StoreCart />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/terms-policies" element={<TermsPolicies />} />
@@ -78,7 +81,7 @@ const AppContent = ({ isLoggedIn, setIsLoggedIn }) => {
           <Route path="/payment" element={<Payment />} />
         </Routes>
       </div>
-      <Footer /> {/* Footer is included here, so it will show on every page */}
+      <Footer />
     </div>
   );
 }

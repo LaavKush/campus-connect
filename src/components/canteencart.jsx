@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
-import { useCart } from '../context/CartContext'; // Ensure the path is correct
+import { useCart } from '../context/CanteenCartContext'; // Ensure the path is correct
 import './Cart.css'; // Import the CSS file for styling
 
-const Cart = () => {
+const CanteenCart = () => {
   const { cartItems, totalPrice } = useCart();
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -67,4 +67,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CanteenCart;

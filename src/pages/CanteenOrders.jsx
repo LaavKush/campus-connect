@@ -117,7 +117,7 @@ const CanteenOrders = () => {
         )}
       </div>
       <div className="button-container1">
-        <button className="view-cart-button1" onClick={() => window.location.href='/cart'}>
+        <button className="view-cart-button1" onClick={() => window.location.href='/canteen-cart'}>
           View Cart
         </button>
       </div>
