@@ -7,6 +7,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState(""); // To display login errors
+  const [loading, setLoading] = useState(false); // Add loading state
   const navigate = useNavigate();
 
   // Function to extract the name from the email
@@ -29,39 +30,30 @@ const Login = () => {
   // Handle login submission
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    // Login payload
-    const loginData = {
-      email: email.trim(),
-      password: password.trim(),
-    };
-
+    setLoading(true); // Start loading
     try {
-      // API request to login endpoint
-      const response = await fetch("https://your-backend-api.com/login", {
+      const response = await fetch("http://54.169.129.117:8080/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(loginData),
+        body: JSON.stringify({ username: email, password: password }),
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log("Login successful:", data);
-
-        // Save token or user data in localStorage or context (if applicable)
-        localStorage.setItem("token", data.token);
-
-        // Redirect to the home page
+        console.log("Login successful!");
+        // Navigate to the appropriate page after a successful login
         navigate("/");
       } else {
-        const errorData = await response.json();
-        setError(errorData.message || "Login failed. Please try again.");
+        const errorText = await response.text();
+        console.error("Error logging in:", errorText);
+        setError(errorText); // Set error message
       }
-    } catch (err) {
-      console.error("Error during login:", err);
-      setError("An error occurred. Please try again.");
+    } catch (error) {
+      console.error("Error:", error);
+      setError("An error occurred while logging in. Please try again.");
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -100,8 +92,12 @@ const Login = () => {
             />
           </div>
           {error && <p className="form-error">{error}</p>} {/* Display error */}
-          <button type="submit" className="form-button">
-            Login
+          <button
+            type="submit"
+            className={`form-button ${loading ? "loading" : ""}`}
+            disabled={loading} // Disable button while loading
+          >
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
         <div className="form-footer">

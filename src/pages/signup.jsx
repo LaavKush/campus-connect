@@ -6,19 +6,66 @@ const Signup = () => {
   const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isOtpVerified, setIsOtpVerified] = useState(false);
+  const [loading, setLoading] = useState(false); // Loading state for buttons
   const navigate = useNavigate();
 
+  // Function to handle OTP sending
   const handleSendOtp = async (e) => {
     e.preventDefault();
-    console.log("Sending OTP to:", email);
-    setIsOtpSent(true); // Set OTP sent state to true
+    setLoading(true);
+    try {
+      const response = await fetch("http://54.169.129.117:8080/api/send-otp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        console.log("OTP sent successfully!");
+        setIsOtpSent(true);
+      } else {
+        const errorText = await response.text();
+        console.error("Error sending OTP:", errorText);
+        alert(`Failed to send OTP: ${errorText}`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred while sending the OTP. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
+  // Function to handle OTP verification
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
-    console.log("Verifying OTP:", otp);
-    setIsOtpVerified(true); // Set OTP verified state to true
-    navigate("/login");
+    setLoading(true);
+    try {
+      const response = await fetch("http://54.169.129.117:8080/api/verify-otp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, otp }),
+      });
+
+      if (response.ok) {
+        console.log("OTP verified successfully!");
+        setIsOtpVerified(true);
+        navigate("/login");
+      } else {
+        const errorText = await response.text();
+        console.error("Error verifying OTP:", errorText);
+        alert(`Failed to verify OTP: ${errorText}`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred while verifying the OTP. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -42,9 +89,12 @@ const Signup = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200"
+            className={`w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200 ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
           >
-            Send OTP
+            {loading ? "Sending OTP..." : "Send OTP"}
           </button>
         </form>
       ) : !isOtpVerified ? (
@@ -65,9 +115,12 @@ const Signup = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200"
+            className={`w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200 ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
           >
-            Verify OTP
+            {loading ? "Verifying OTP..." : "Verify OTP"}
           </button>
         </form>
       ) : (
