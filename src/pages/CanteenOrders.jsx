@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // For navigation
 import "../components/CanteenOrders.css"; // Correct path for CSS
 
 import burger from "../assets/burger.jpg";
@@ -32,6 +33,7 @@ const items = [
 const CanteenOrders = () => {
   const [quantities, setQuantities] = useState(Array(items.length).fill(0));
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate(); // Initialize navigate for routing
 
   const incrementQuantity = (index) => {
     const newQuantities = [...quantities];
@@ -68,6 +70,10 @@ const CanteenOrders = () => {
     }
   };
 
+  const handleRemoveItem = (index) => {
+    setCart((prevCart) => prevCart.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="canteen-orders">
       <h1 className="title">Canteen Orders</h1>
@@ -79,7 +85,7 @@ const CanteenOrders = () => {
             <h2 className="item-name">{item.name}</h2>
             <p className="item-cost">Cost: {item.cost}</p>
             <p className="item-rate">Rate: {item.rate}</p>
-            <div class ="quantity-controls">
+            <div className="quantity-controls">
               <button 
                 onClick={() => decrementQuantity(index)} 
                 className="button" 
@@ -104,21 +110,56 @@ const CanteenOrders = () => {
           </div>
         ))}
       </div>
-      <div className="cart-summary1">
-        <h2>Cart Summary</h2>
-        {cart.length > 0 ? (
-          cart.map((cartItem, index) => (
-            <div key={index}>
-              {cartItem.name} - Quantity: {cartItem.quantity}
-            </div>
-          ))
-        ) : (
-          <p>Your cart is empty.</p>
-        )}
-      </div>
-      <div className="button-container1">
-        <button className="view-cart-button1" onClick={() => window.location.href='/canteen-cart'}>
+
+      <div className="cart-summary">
+  <h2 className="cart-title">Cart Summary</h2>
+  {cart.length > 0 ? (
+    <ul className="cart-list">
+      {cart.map((cartItem, index) => (
+        <li key={index} className="cart-item">
+          <div className="item-details">
+            <span className="item-name">{cartItem.name} x{cartItem.quantity}</span>
+            <span className="item-cost">{cartItem.cost}</span>
+          </div>
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent clicking the item from triggering item removal
+              handleRemoveItem(index);
+            }}
+            className="remove-btn"
+          >
+            Remove
+          </button>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p className="empty-cart-message">Your cart is empty.</p>
+  )}
+  {/* <div className="cart-summary-footer">
+    <button className="view-cart-button">View Cart</button>
+  </div> */}
+</div>
+
+
+      {/* <div className="button-container1">
+        <button className="view-cart-button1" onClick={() => navigate('/canteen-cart')}>
           View Cart
+        </button>
+      </div> */}
+
+      <div className="cart-buttons1">
+        <button
+          className="checkout-button"
+          onClick={() => navigate('/payment')}
+        >
+          Buy
+        </button>
+        <button
+          className="continue-shopping-button"
+          onClick={() => navigate('/')}
+        >
+          Continue Shopping
         </button>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';  // Correct import for useNavigate
 import engineeringMathematics from '../assets/rentbuy/np bali.jpeg';
 import fundamentalsOfCpp from '../assets/rentbuy/c++.jpeg';
 import engineeringMechanics from '../assets/rentbuy/em.jpeg';
@@ -7,7 +8,6 @@ import labCoat from '../assets/rentbuy/coat.jpeg';
 import drafter from '../assets/rentbuy/drafter.jpeg';
 import sheetHolder from '../assets/rentbuy/sheet holder.jpeg';
 import workshopApron from '../assets/rentbuy/apron.jpeg';
-// import { useCart } from '../context/CartContext'; // Correct import path
 import '../components/BrowseItems.css'; // Import CSS for styling
 
 const browseitems = {
@@ -80,13 +80,13 @@ const browseitems = {
 };
 
 const BrowseItems = () => {
-  const { addToCart } = useCart();
+  const navigate = useNavigate();  // Initialize the navigate function
 
   return (
     <div className="container2">
       <div className="content-container2">
         <h1 className="main-heading2">Browse Items</h1>
-        
+
         {/* Heading for Books */}
         <h2 className="sub-heading2">Books</h2>
         <div className="item-grid2">
@@ -96,7 +96,12 @@ const BrowseItems = () => {
               <h3>{item.name}</h3>
               <p>Author: {item.author}</p>
               <p>Price: Rs.{item.price.toFixed(2)}</p>
-              <button className="rent-buy-button" onClick={() => window.location.href='/chat'}>Rent/Buy</button>
+              <button
+                className="rent-buy-button"
+                onClick={() => navigate('/chat')} // Use navigate to redirect
+              >
+                Rent/Buy
+              </button>
             </div>
           ))}
         </div>
@@ -110,16 +115,18 @@ const BrowseItems = () => {
               <h3>{item.name}</h3>
               <p>Author: {item.author}</p>
               <p>Price: Rs.{item.price.toFixed(2)}</p>
-              <button className="rent-buy-button" onClick={() => window.location.href='/chat'}>
+              <button
+                className="rent-buy-button"
+                onClick={() => navigate('/chat')} // Use navigate to redirect
+              >
                 Rent/Buy
               </button>
             </div>
           ))}
         </div>
       </div>
-      
     </div>
   );
 };
 
-export default BrowseItems; 
+export default BrowseItems;

@@ -18,7 +18,7 @@ import { CanteenCartProvider1 } from "./context/CanteenCartContext";
 import PrivacyPolicy from "./pages/PrivacyPolicy"; 
 import TermsOfService from "./pages/TermsOfService"; 
 import TermsPolicies from "./pages/TermsPolicies"; 
-import Login from "./pages/Login"; 
+import Login from "./pages/login"; 
 import Signup from "./pages/Signup"; 
 import Chat from "./pages/Chat"; 
 import FAQs from "./pages/FAQs";
