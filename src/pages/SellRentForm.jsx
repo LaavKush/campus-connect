@@ -5,19 +5,17 @@ const SellRentForm = () => {
   const [itemName, setItemName] = useState('');
   const [itemDescription, setItemDescription] = useState('');
   const [itemPrice, setItemPrice] = useState('');
-  const [itemQuantity, setItemQuantity] = useState(1); // State for quantity
+  const [itemQuantity, setItemQuantity] = useState(1);
   const [isRenting, setIsRenting] = useState(false);
-  const [itemImage, setItemImage] = useState(null); // State for image
+  const [itemImage, setItemImage] = useState(null);
 
   const handleImageChange = (e) => {
-    setItemImage(e.target.files[0]); // Set the selected image
+    setItemImage(e.target.files[0]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., API call)
     console.log({ itemName, itemDescription, itemPrice, itemQuantity, isRenting, itemImage });
-    // Reset form fields
     setItemName('');
     setItemDescription('');
     setItemPrice('');
@@ -27,7 +25,7 @@ const SellRentForm = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container1">
       <h1 className="form-title">Sell or Rent Your Item</h1>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
@@ -39,6 +37,7 @@ const SellRentForm = () => {
               onChange={(e) => setItemName(e.target.value)}
               required
               className="form-input"
+              placeholder="Enter the item name"
             />
           </label>
         </div>
@@ -50,6 +49,7 @@ const SellRentForm = () => {
               onChange={(e) => setItemDescription(e.target.value)}
               required
               className="form-textarea"
+              placeholder="Enter a detailed description"
             />
           </label>
         </div>
@@ -62,6 +62,7 @@ const SellRentForm = () => {
               onChange={(e) => setItemPrice(e.target.value)}
               required
               className="form-input"
+              placeholder="Enter the price"
             />
           </label>
         </div>
@@ -75,6 +76,7 @@ const SellRentForm = () => {
               min="1"
               required
               className="form-input"
+              placeholder="Enter the quantity"
             />
           </label>
         </div>

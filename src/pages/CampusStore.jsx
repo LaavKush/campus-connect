@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "../components/CampusStore.css";
+import { useNavigate } from "react-router-dom";
+
 
 // Import images for personal care and hygiene items
 import facewash from "../assets/facewash.webp";
@@ -39,6 +41,8 @@ const CampusStore = () => {
   const [cart, setCart] = useState([]);
   const [quantities, setQuantities] = useState({});
   const [openDescription, setOpenDescription] = useState({});
+  // const contextValue = useContext(MyContext); 
+  const navigate = useNavigate();
 
   const items = [
     {
@@ -271,15 +275,17 @@ const CampusStore = () => {
   const handleBuy = (item) => {
     const quantity = quantities[item.name] || 0;
     if (quantity > 0) {
-      const existingIndex = cart.findIndex((cartItem) => cartItem.name === item.name);
-      if (existingIndex !== -1) {
-        const updatedCart = [...cart];
-        updatedCart[existingIndex].quantity += quantity;
-        setCart(updatedCart);
-      } else {
-        setCart([...cart, { ...item, quantity }]);
-      }
-      setQuantities({ ...quantities, [item.name]: 0 }); // Reset quantity after adding to cart
+      setCart((prevCart) => {
+        const existingIndex = prevCart.findIndex((cartItem) => cartItem.name === item.name);
+        if (existingIndex !== -1) {
+          const updatedCart = [...prevCart];
+          updatedCart[existingIndex].quantity += quantity;
+          return updatedCart;
+        } else {
+          return [...prevCart, { ...item, quantity }];
+        }
+      });
+      setQuantities({ ...quantities, [item.name]: 0 }); // Reset quantity
     }
   };
 
@@ -290,50 +296,105 @@ const CampusStore = () => {
     }));
   };
 
-  return (
-    <div className="store">
-      {items.map((category) => (
-        <div key={category.category} className="category">
-          <h2>{category.category}</h2>
-          <div className="item-list">
-            {category.items.map((item) => (
-              <div key={item.name} className="item">
-                <img src={item.image} alt={item.name} className="item-image" />
-                <div className="item-details">
-                  <h3>{item.name}</h3>
-                  <p>Price: {item.cost} ({item.rate})</p>
-                  <button onClick={() => toggleDescription(item.name)}>Show Description</button>
-                  {openDescription[item.name] && <p>{item.description}</p>}
-                  <div className="quantity-controls">
-                    <button onClick={() => decrementQuantity(item.name)}>-</button>
-                    <span>{quantities[item.name] || 0}</span>
-                    <button onClick={() => incrementQuantity(item.name)}>+</button>
-                  </div>
-                  <button className="buy-button" onClick={() => handleBuy(item)}>
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+  const Item = ({ item }) => (
+    <div className="item">
+      <img src={item.image} alt={item.name} className="item-image" />
+      <div className="item-details">
+        <h3>{item.name}</h3>
+        <p>Price: {item.cost} ({item.rate})</p>
+        <button onClick={() => toggleDescription(item.name)}>
+          {openDescription[item.name] ? "Hide" : "Show"} Description
+        </button>
+        {openDescription[item.name] && <p>{item.description}</p>}
+        <div className="quantity-controls">
+          <button onClick={() => decrementQuantity(item.name)}>-</button>
+          <span>{quantities[item.name] || 0}</span>
+          <button onClick={() => incrementQuantity(item.name)}>+</button>
         </div>
-      ))}
-      <div className="cart">
-        <h3>Your Cart</h3>
-        <ul>
-          {cart.map((cartItem, index) => (
-            <li key={index}>
-              {cartItem.name} x{cartItem.quantity} - {cartItem.cost} 
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="button-container1">
-        <button className="view-cart-button1" onClick={() => window.location.href='/store-cart'}>
-          View Cart
+        <button className="buy-button" onClick={() => handleBuy(item)}>
+          Add to Cart
         </button>
       </div>
     </div>
+  );
+
+  const Category = ({ category }) => (
+    <div className="category">
+      <h2>{category.category}</h2>
+      <div className="item-list">
+        {category.items.map((item) => (
+          <Item key={item.name} item={item} />
+        ))}
+      </div>
+    </div>
+  );
+
+  const Cart = () => {
+    const handleRemoveItem = (index) => {
+      // Assuming you have a function to update the cart (like setCart in a state)
+      setCart((prevCart) => prevCart.filter((_, i) => i !== index));
+    };
+  
+    return (
+      <div className="cart">
+        <h3>Your Cart</h3>
+        {cart.length > 0 ? (
+          <ul>
+            {cart.map((cartItem, index) => (
+              <li
+                key={index}
+                onClick={() => handleRemoveItem(index)} // Click to remove item
+                className="cart-item"
+              >
+                <span>{cartItem.name} x{cartItem.quantity} - {cartItem.cost}</span>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent clicking the button from triggering item removal
+                    handleRemoveItem(index);
+                  }}
+                  className="remove-btn"
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>Your cart is empty.</p>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="store">
+      {items.map((category) => (
+        <Category key={category.category} category={category} />
+      ))}
+      <Cart />
+      {/* <div className="button-container1">
+        <button className="view-cart-button1" >onClick={() => navigate("/store-cart")}
+          View Cart
+        </button>
+      </div> */}
+
+      {/* Cart Buttons */}
+      <div className="cart-buttons">
+        <button
+          className="checkout-button"
+          onClick={() => navigate('/payment')}
+        >
+          Buy
+        </button>
+        <button
+          className="continue-shopping-button"
+          onClick={() => navigate('/')}
+        >
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+
   );
 };
 

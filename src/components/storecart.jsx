@@ -3,18 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/StoreCartContext';
 import './Cart.css';
 
-
 const StoreCart = () => {
   const { cartItems, totalPrice, removeFromCart } = useCart(); // Access the context
   const navigate = useNavigate();
 
-  
+  // Log cartItems to verify they are passed correctly
+  console.log(cartItems); // Check if cartItems are present
 
   // Handle empty cart case
   if (cartItems.length === 0) {
     return <div className="empty-cart">Your cart is empty.</div>;
   }
-  
 
   return (
     <div className="cart-container">
@@ -32,8 +31,8 @@ const StoreCart = () => {
           </tr>
         </thead>
         <tbody>
-          {cartItems.map(item => (
-            <tr key={item.id}>
+          {cartItems.map((item) => (
+            <tr key={item.name}> {/* Use 'name' as a unique key */}
               <td>{item.name}</td>
               <td>{item.quantity}</td>
               <td>{item.price.toFixed(2)}</td>
@@ -41,7 +40,7 @@ const StoreCart = () => {
               <td>
                 <button
                   className="remove-button"
-                  onClick={() => removeFromCart(item.id)} // Correctly calling removeFromCart
+                  onClick={() => removeFromCart(item.name)} // Correctly calling removeFromCart
                 >
                   Remove
                 </button>
