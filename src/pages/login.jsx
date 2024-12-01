@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Login.css';
 
+// Export variable to store the email globally
+export let userEmail = "";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +24,7 @@ const Login = () => {
   const handleEmailChange = (e) => {
     const enteredEmail = e.target.value;
     setEmail(enteredEmail);
+    userEmail = enteredEmail; // Update exported variable
 
     // Extract and set the name
     const extractedName = extractName(enteredEmail);
