@@ -12,7 +12,7 @@ const PaymentGateway = () => {
     // Simulate the payment success after a delay (e.g., 3 seconds)
     setTimeout(() => {
       setIsPaymentSuccessful(true); // Trigger payment success
-    }, 3000); // Simulate delay (you can adjust this based on actual scan behavior)
+    }, 8000); // Simulate delay (you can adjust this based on actual scan behavior)
   };
 
   return (
